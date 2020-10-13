@@ -9,8 +9,30 @@
     
 </body>
 <script>
+    let choices = ['rock', 'paper', 'scissors'];
     const computerPlay = () => {
-        
+        let randNum = Math.floor(Math.random() * 3);
+        return choices[randNum];
     }
+
+    const playGame = (computerSelection, playerSelection) => {
+        if (playerSelection !== 'rock' && playerSelection !== 'paper' && playerSelection !== 'scissors') {
+            return `${playerSelection} is not a valid choice. Refresh and choose again.`;
+        } else if (playerSelection === computerSelection) {
+            return `${playerSelection}, ${computerSelection}: It\'s a tie!!!`;
+        } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+            return `${playerSelection}, ${computerSelection}: You win!`;
+        } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+            return `${playerSelection}, ${computerSelection}: You win!`;
+        } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+            return `${playerSelection}, ${computerSelection}: You win!`;
+        } else {
+            return `${playerSelection}, ${computerSelection}: Loser!`;
+        }
+    };
+
+    const playerSelection = prompt('Choose Your Weapon! (rock, paper, or scissors)').toLowerCase();
+    const computerSelection = computerPlay();
+    console.log(playGame(computerSelection, playerSelection));
 </script>
 </html>
